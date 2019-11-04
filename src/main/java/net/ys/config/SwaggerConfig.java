@@ -58,8 +58,7 @@ public class SwaggerConfig {
      */
     private Predicate<String> doFilteringRules() {
         return or(
-                regex("/test.*"),
-                regex("/swagger.*")
+                regex("/api.*")
         );
     }
 }

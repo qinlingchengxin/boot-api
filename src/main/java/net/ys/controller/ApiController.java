@@ -12,9 +12,9 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping("swagger")
-@Api(value = "swagger", description = "车辆模块接口详情")
-public class SwaggerController {
+@RequestMapping("api/swagger")
+@Api(value = "swagger-api", description = "车辆模块接口详情")
+public class ApiController {
 
     @GetMapping
     @ApiOperation(value = "查询车辆接口", notes = "此接口描述<br/>值得庆幸的是这儿支持html标签<hr/>", response = ModelMap.class)

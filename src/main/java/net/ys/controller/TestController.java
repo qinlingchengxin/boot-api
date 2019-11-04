@@ -17,8 +17,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @RestController
-@RequestMapping("test")
-@Api(value = "test", description = "测试接口")
+@RequestMapping("api/test")
+@Api(value = "test-api", description = "测试接口")
 public class TestController {
 
     @Resource
