@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>API框架</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" th:href="@{/static/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/basic.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/index.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/topAndBottom.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        ctxPath = /*[[@{/}]]*/ '';
+
+        /*]]>*/
+
+        function logout() {
+            $.ajax({
+                url: ctxPath + "logout",
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    if (result.code == 1000) {
+                        window.parent.location.reload();
+                    } else {
+                        alert(result.msg);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+<div class="top clearfloat">
+    <div class="logo fl"><a href="javascript:void(0)">API框架</a></div>
+    <div class="fr time">
+        <p>您好，<span>管理员</span>欢迎进入API框架!</p>
+
+        <p><span th:text="${now}"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:logout();" style="color: #7CA710;">退出</a></p>
+    </div>
+</div>
+<div class="fullSearch clearfloat">
+    <span class="fl welcome">WELCOME</span>
+    <a class="fl index" href="javascript:void(0)"><img th:src="@{/static/img/shouye.png}"></a>
+</div>
+</body>
+</html>

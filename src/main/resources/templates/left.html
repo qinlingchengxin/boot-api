@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>API框架</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" th:href="@{/static/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/basic.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/index.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/topAndBottom.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/menu.js}"></script>
+</head>
+<body>
+<div class="content_left">
+    <ul class="lv1-ul">
+
+        <li class="lv1-li">
+            <a target="rightFrame" th:href="@{/web/persons}"><span>用户</span></a>
+        </li>
+
+        <li class="lv1-li">
+            <span>二级导航栏<i></i></span>
+            <ul class="lv2-ul">
+                <li class="lv2-li"><a target="rightFrame" href="#">测试一</a></li>
+                <li class="lv2-li"><a target="rightFrame" href="#">测试二</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

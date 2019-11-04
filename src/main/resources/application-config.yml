@@ -1,0 +1,4 @@
+config:
+  app_name: boot-api
+  test_path: /test/hello
+

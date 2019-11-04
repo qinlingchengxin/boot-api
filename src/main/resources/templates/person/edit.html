@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" th:href="@{/static/favicon.ico}"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/basic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/form.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/topAndBottom.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/menu.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/jquery.extend.js}"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+
+        /*<![CDATA[*/
+        ctxPath = /*[[@{/}]]*/ '';
+
+        /*]]>*/
+
+        function save() {
+            var form = $('#form');
+            var baseObj = form.serializeObject();
+            $.ajax({
+                url: ctxPath + "/web/person/save",
+                type: "POST",
+                data: baseObj,
+                dataType: "json",
+                success: function (result) {
+                    if (result.code == 1000) {
+                        alert('保存成功');
+                    } else {
+                        alert(result.msg);
+                    }
+                }
+            });
+        }
+
+        function add() {
+            var form = $('#form');
+            var baseObj = form.serializeObject();
+            $.ajax({
+                url: ctxPath + "/web/person/add",
+                type: "POST",
+                data: baseObj,
+                dataType: "json",
+                success: function (result) {
+                    if (result.code == 1000) {
+                        $("#id").val(result.data.id);
+                        $("#btn_add").attr("onclick", "save();").text("保存");
+                        alert('添加成功');
+                    } else {
+                        alert(result.msg);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="content clearfloat">
+    <div class="content_right fr">
+        <div class="first">
+            <a href="javascript:history.go(-1);">返回</a><span>></span><a href="javascript:void(0)">用户</a>
+        </div>
+        <div class="second">
+            <form id="form">
+                <input type="hidden" id="id" name="id" th:value="${person.id}"/>
+
+                <div>
+                    <span class="title">用户名</span>
+                    <input id="doc-ipt-name-1" type="text" name="name" th:value="${person.name}"/>
+                </div>
+
+                <div>
+                    <span class="title">年龄</span>
+                    <input id="doc-ipt-age-1" type="text" name="age" th:value="${person.age}"/>
+                </div>
+
+                <div>
+                    <span th:if="${person.id == 0}" id="btn_add" class="save" onclick="add();">添加</span>
+                    <span th:if="${person.id != 0}" class="save" onclick="save();">保存</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

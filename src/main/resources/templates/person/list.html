@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>用户</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" th:href="@{/static/favicon.ico}"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/basic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/topAndBottom.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/My97DatePicker/WdatePicker.js}"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+
+        /*<![CDATA[*/
+        ctxPath = /*[[@{/}]]*/ '';
+
+        /*]]>*/
+
+        function searchData() {
+            var name = document.getElementById("name").value;
+            window.location = ctxPath + "/web/persons?name=" + name;
+        }
+    </script>
+</head>
+<body>
+
+<div class="content clearfloat">
+    <div class="content_right fr">
+        <div class="first clearfloat">
+            <div class="fl title">用户</div>
+            <div class="fr operation">
+                <span><a th:href="@{'/web/persons?name='+${name}}" target="rightFrame"> <img th:src="@{/static/img/flush.png}">刷新</a></span>
+                <span><a th:href="@{/web/person/edit}" target="rightFrame"> <img th:src="@{/static/img/zengjia.png}">新增</a></span>
+            </div>
+        </div>
+
+        <div class="second">
+            <form>
+                <span>用户名：</span>
+                <input style="width: 120px; height: 26px;background-color: #ffffff;color:#000;border: 1px solid #EAEBE8;cursor: auto;" type="text" id="name" th:value="${name}"/>
+
+                <input type="button" onclick="searchData();" value="搜索"/>
+            </form>
+        </div>
+
+        <div class="third">
+            <table>
+                <tr>
+                    <th width="4%">序号</th>
+                    <th width="15%">用户名</th>
+                    <th width="15%">年龄</th>
+                    <th width="12%">创建时间</th>
+                    <th style="text-align: center;">操作</th>
+                </tr>
+
+                <tr th:each="person,personStat : ${persons}">
+                    <td>[[${personStat.index + 1}]]</td>
+                    <td>[[${person.name}]]</td>
+                    <td>[[${person.age}]]</td>
+                    <td th:text="${#dates.format(person.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td style="text-align: center;">
+                        <span><a th:href="@{'/web/person/edit?id='+${person.id}}" target="rightFrame">编辑</a></span>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="fenye">
+                <ul class="fy_ul">
+                    <li class="fy_li_first">共 [[${count}]] 条记录</li>
+                    <li th:if="${curr_page == 1}"><a href="#">上一页</a></li>
+                    <li th:if="${curr_page > 1}"><a th:href="@{'/web/persons?name='+${name}+'&page='+${curr_page - 1}}">上一页</a></li>
+                    <li id="curr_page">[[${curr_page}]]</li>
+                    <li th:if="${curr_page >= total_page}"><a href="#">下一页</a></li>
+                    <li th:if="${total_page > curr_page}"><a th:href="@{'/web/persons?name='+${name}+'&page='+${curr_page + 1}}">下一页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
