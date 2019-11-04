@@ -18,8 +18,14 @@ public class SysConfig {
 
     public static String testPath;
 
+    public static String dingTalkUrl;
+
     public void setAppName(String appName) {
         this.appName = appName;
+    }
+
+    public void setDingTalkUrl(String dingTalkUrl) {
+        this.dingTalkUrl = dingTalkUrl;
     }
 
     public void setTestPath(String testPath) {

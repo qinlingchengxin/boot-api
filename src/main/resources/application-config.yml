@@ -1,4 +1,5 @@
 config:
   app_name: boot-api
   test_path: /test/hello
+  ding_talk_url: 3b322276e6736349fccd3b34c93a1bd994d63bea32614e95b6a8c09a477321c5
 
