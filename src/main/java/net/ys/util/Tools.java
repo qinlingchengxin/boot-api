@@ -12,6 +12,7 @@ public class Tools {
 
     /**
      * MD5加密
+     * 或者直接使用 DigestUtils.md5Hex(str);
      *
      * @param str
      * @return
