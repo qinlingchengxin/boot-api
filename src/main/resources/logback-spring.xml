@@ -20,7 +20,8 @@
     <springProfile name="prod">
         <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${log.path}/%d{MM/dd,aux}/debug.%d{yy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>${log.path}/debug.%d{yy-MM-dd}.log</fileNamePattern>
+                <!--<fileNamePattern>${log.path}/%d{MM/dd,aux}/debug.%d{yy-MM-dd}.log</fileNamePattern>-->
                 <MaxHistory>${log.maxHistory}</MaxHistory>
             </rollingPolicy>
             <encoder>
@@ -35,7 +36,8 @@
 
         <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${log.path}/%d{MM/dd,aux}/info.%d{yy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>${log.path}/info.%d{yy-MM-dd}.log</fileNamePattern>
+                <!--<fileNamePattern>${log.path}/%d{MM/dd,aux}/info.%d{yy-MM-dd}.log</fileNamePattern>-->
                 <MaxHistory>${log.maxHistory}</MaxHistory>
             </rollingPolicy>
             <encoder>
@@ -50,7 +52,8 @@
 
         <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${log.path}/%d{MM/dd,aux}/error.%d{yy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>${log.path}/error.%d{yy-MM-dd}.log</fileNamePattern>
+                <!--<fileNamePattern>${log.path}/%d{MM/dd,aux}/error.%d{yy-MM-dd}.log</fileNamePattern>-->
             </rollingPolicy>
             <encoder>
                 <pattern>${log.pattern}</pattern>
