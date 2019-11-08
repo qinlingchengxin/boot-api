@@ -13,8 +13,8 @@ spring:
     include: config
   application:
     name: boot-api
-  jackson:
-    property-naming-strategy: SNAKE_CASE  #返回的数据采用小写加下划线的方式
+  #  jackson:
+  #    property-naming-strategy: SNAKE_CASE  #返回的数据采用小写加下划线的方式
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -60,6 +60,8 @@ spring:
     password: guest
   thymeleaf:
     cache: false
+  mvc:
+    static-path-pattern: /static/**
 
 #优雅的关闭程序
 management:

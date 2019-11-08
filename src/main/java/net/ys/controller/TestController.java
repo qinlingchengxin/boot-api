@@ -1,6 +1,9 @@
 package net.ys.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import net.ys.bean.Person;
 import net.ys.bean.User;
 import net.ys.constant.CacheKey;
@@ -27,8 +30,8 @@ public class TestController {
     @Resource
     private RedisTemplate<String, Serializable> redisCacheTemplate;
 
-    @GetMapping("test")
-    public Object test() {
+    @GetMapping("cache")
+    public Object cache() {
         Person person = new Person(1, "jack", 34, 0);
         redisCacheTemplate.opsForValue().set(CacheKey.KEY_PERSON + person.getId(), person);
         Serializable serializable = redisCacheTemplate.opsForValue().get(CacheKey.KEY_PERSON + person.getId());
@@ -39,10 +42,11 @@ public class TestController {
     }
 
     @GetMapping("user")
-    public User user(String id, String username) {
-        System.out.println(id);
-        System.out.println(username);
-        return new User(1, "jack", 34);
+    @ApiOperation(value = "测试对象", notes = "此接口描述<br/>值得庆幸的是这儿支持html标签<hr/>", response = User.class)
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "标识", dataType = "int", paramType = "query", defaultValue = "1"),
+            @ApiImplicitParam(name = "username", value = "用户名", dataType = "string", paramType = "query", defaultValue = "jack")})
+    public User user(long id, String username) {
+        return new User(id, username, 34);
     }
 
     @GetMapping("persons")

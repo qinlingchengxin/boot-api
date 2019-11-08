@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import net.ys.bean.Person;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,24 +74,11 @@ public class ApiController {
         return map;
     }
 
-    @DeleteMapping("{id}")
-    @ApiOperation(value = "根据车辆id查询", notes = "精确查询,最常规的方式,支持POST和GET方式", response = ModelMap.class)
-    @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "id", dataType = "string", paramType = "path", defaultValue = "12344444")})
-    public ModelMap delById(@PathVariable(value = "id") String id) {
-
-        log.info("http://localhost:8501/api/v1/vehicles/{}", id);
-        log.info("## 请求时间：{}", new Date());
-
-        ModelMap map = new ModelMap();
-        map.addAttribute("RequestMethod.DELETE", id);
-        return map;
-    }
-
-    /*@PutMapping(value = "change_rental_shop")
-    @ApiOperation(value = "网点挂靠", notes = "嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻", response = PersonDto.class)
+    @PutMapping(value = "change_rental_shop")
+    @ApiOperation(value = "网点挂靠", notes = "嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻", response = Person.class)
     public Person changeRentalShop(@RequestBody Person person) {
         log.info("http://localhost:8501/api/v1/vehicles/change_rentalshop | {}", person);
         log.info("## 请求时间：{}", new Date());
         return person;
-    }*/
+    }
 }
