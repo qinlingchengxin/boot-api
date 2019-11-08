@@ -3,10 +3,6 @@ server:
     context-path: /boot-api
   port: 8080
 
-logging:
-  level:
-    root: info
-
 spring:
   profiles:
     active: dev

@@ -2,7 +2,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <property name="log.path" value="logs/boot-api"/>
     <property name="log.maxHistory" value="15"/>
-    <property name="log.pattern" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
+    <property name="log.pattern" value="%-12(%d{MM-dd HH:mm:ss}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
 
     <!--开发环境-->
     <springProfile name="dev">
